@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -82,12 +86,19 @@ nav h1 {
   flex-wrap: wrap;
 }
 
-.stats div {
+.stats a {
   background: white;
   color: #111827;
   padding: 11px 16px;
   border-radius: 12px;
   font-weight: bold;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.stats a:hover {
+  transform: translateY(-2px);
+  background: #f3f4f6;
 }
 
 main {
