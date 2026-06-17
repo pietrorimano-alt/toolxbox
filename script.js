@@ -15,7 +15,7 @@ function calcolaMedia() {
   const media = somma / voti.length;
 
   document.getElementById("risultatoMedia").innerText =
-    "La tua media è: " + media.toFixed(2);
+    "La media è: " + media.toFixed(2);
 }
 
 function calcolaPercentuale() {
@@ -33,6 +33,38 @@ function calcolaPercentuale() {
     percentuale + "% di " + numero + " è " + risultato.toFixed(2);
 }
 
+function calcolaSconto() {
+  const prezzo = parseFloat(document.getElementById("prezzo").value);
+  const sconto = parseFloat(document.getElementById("sconto").value);
+
+  if (isNaN(prezzo) || isNaN(sconto)) {
+    document.getElementById("risultatoSconto").innerText = "Inserisci valori validi.";
+    return;
+  }
+
+  const risparmio = (prezzo * sconto) / 100;
+  const prezzoFinale = prezzo - risparmio;
+
+  document.getElementById("risultatoSconto").innerText =
+    "Prezzo finale: €" + prezzoFinale.toFixed(2) + " | Risparmi: €" + risparmio.toFixed(2);
+}
+
+function calcolaIva() {
+  const prezzo = parseFloat(document.getElementById("prezzoIva").value);
+  const iva = parseFloat(document.getElementById("iva").value);
+
+  if (isNaN(prezzo) || isNaN(iva)) {
+    document.getElementById("risultatoIva").innerText = "Inserisci valori validi.";
+    return;
+  }
+
+  const valoreIva = (prezzo * iva) / 100;
+  const totale = prezzo + valoreIva;
+
+  document.getElementById("risultatoIva").innerText =
+    "Totale con IVA: €" + totale.toFixed(2) + " | IVA: €" + valoreIva.toFixed(2);
+}
+
 function calcolaStipendio() {
   const stipendio = parseFloat(document.getElementById("stipendio").value);
   const tipo = document.getElementById("tipoStipendio").value;
@@ -42,13 +74,7 @@ function calcolaStipendio() {
     return;
   }
 
-  let annuo = 0;
-
-  if (tipo === "settimanale") {
-    annuo = stipendio * 52;
-  } else {
-    annuo = stipendio * 12;
-  }
+  let annuo = tipo === "settimanale" ? stipendio * 52 : stipendio * 12;
 
   document.getElementById("risultatoStipendio").innerText =
     "Guadagno annuo: €" + annuo.toFixed(2);
@@ -75,3 +101,49 @@ function calcolaEta() {
   document.getElementById("risultatoEta").innerText =
     "Hai " + eta + " anni.";
 }
+
+function calcolaBMI() {
+  const peso = parseFloat(document.getElementById("peso").value);
+  const altezzaCm = parseFloat(document.getElementById("altezza").value);
+
+  if (isNaN(peso) || isNaN(altezzaCm) || altezzaCm <= 0) {
+    document.getElementById("risultatoBMI").innerText = "Inserisci peso e altezza validi.";
+    return;
+  }
+
+  const altezzaM = altezzaCm / 100;
+  const bmi = peso / (altezzaM * altezzaM);
+
+  document.getElementById("risultatoBMI").innerText =
+    "Il tuo BMI è: " + bmi.toFixed(2);
+}
+
+function calcolaRisparmio() {
+  const mensile = parseFloat(document.getElementById("risparmioMensile").value);
+
+  if (isNaN(mensile)) {
+    document.getElementById("risultatoRisparmio").innerText = "Inserisci un importo valido.";
+    return;
+  }
+
+  const annuale = mensile * 12;
+
+  document.getElementById("risultatoRisparmio").innerText =
+    "Risparmio annuale: €" + annuale.toFixed(2);
+}
+
+document.getElementById("searchInput").addEventListener("input", function () {
+  const ricerca = this.value.toLowerCase();
+  const strumenti = document.querySelectorAll(".tool-card");
+
+  strumenti.forEach(tool => {
+    const nome = tool.getAttribute("data-name").toLowerCase();
+    const titolo = tool.querySelector("h3").innerText.toLowerCase();
+
+    if (nome.includes(ricerca) || titolo.includes(ricerca)) {
+      tool.style.display = "block";
+    } else {
+      tool.style.display = "none";
+    }
+  });
+});

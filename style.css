@@ -1,64 +1,142 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #f4f6f8;
-  margin: 0;
-  color: #222;
+* {
+  box-sizing: border-box;
 }
 
-header {
-  background: #111827;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.hero {
+  background: linear-gradient(135deg, #111827, #1e40af);
   color: white;
+  padding-bottom: 60px;
+}
+
+nav {
+  max-width: 1100px;
+  margin: auto;
+  padding: 22px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hero-content {
+  max-width: 900px;
+  margin: auto;
   text-align: center;
   padding: 40px 20px;
 }
 
+.hero-content h2 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.hero-content p {
+  font-size: 20px;
+  color: #dbeafe;
+}
+
+#searchInput {
+  margin-top: 25px;
+  width: 100%;
+  max-width: 500px;
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+  font-size: 17px;
+}
+
 main {
-  max-width: 900px;
-  margin: 30px auto;
+  max-width: 1100px;
+  margin: 40px auto;
   padding: 0 20px;
 }
 
-.tool {
-  background: white;
-  padding: 25px;
-  margin-bottom: 25px;
-  border-radius: 14px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+.section-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 32px;
 }
 
-h2 {
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.tool-card {
+  background: white;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.tool-card h3 {
   margin-top: 0;
+  font-size: 22px;
 }
 
 input, select {
-  display: block;
   width: 100%;
-  max-width: 400px;
   padding: 12px;
-  margin: 10px 0;
+  margin: 8px 0;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
   font-size: 16px;
 }
 
 button {
+  width: 100%;
+  margin-top: 10px;
   background: #2563eb;
   color: white;
   border: none;
-  padding: 12px 18px;
-  border-radius: 8px;
+  padding: 13px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 16px;
+  font-weight: bold;
 }
 
 button:hover {
   background: #1d4ed8;
 }
 
-p {
-  font-size: 18px;
+.tool-card p {
+  margin-bottom: 0;
+  font-weight: bold;
+  color: #1e40af;
 }
 
 footer {
   text-align: center;
-  padding: 20px;
-  color: #666;
+  padding: 30px;
+  color: #6b7280;
+}
+
+@media (max-width: 600px) {
+  .hero-content h2 {
+    font-size: 30px;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
