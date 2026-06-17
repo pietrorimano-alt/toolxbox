@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ToolBox - Strumenti online gratuiti</title>
+  <title>ToolBox Studenti - Strumenti online gratuiti</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,92 +11,157 @@
 <header class="hero">
   <nav>
     <h1>ToolBox</h1>
-    <a href="#strumenti">Strumenti</a>
+    <div class="nav-links">
+      <a href="#studio">Studio</a>
+      <a href="#lavoro">Lavoro</a>
+      <a href="#finanza">Finanza</a>
+      <a href="#salute">Salute</a>
+    </div>
   </nav>
 
   <div class="hero-content">
-    <h2>Strumenti online semplici, gratis e veloci</h2>
-    <p>Calcolatori e utility per scuola, lavoro, soldi e vita quotidiana.</p>
+    <span class="badge">Pensato per studenti e universitari</span>
+    <h2>Gli strumenti indispensabili per studenti e universitari</h2>
+    <p>Calcola medie, CFU, voto di laurea, stipendio, IVA, BMI e molto altro. Tutto gratis e senza registrazione.</p>
+
     <input id="searchInput" type="text" placeholder="Cerca uno strumento...">
+
+    <div class="stats">
+      <div>📚 Studio</div>
+      <div>💼 Lavoro</div>
+      <div>💰 Finanza</div>
+      <div>❤️ Salute</div>
+    </div>
   </div>
 </header>
 
-<main id="strumenti">
+<main>
 
-  <h2 class="section-title">Strumenti disponibili</h2>
+  <section class="category" id="studio">
+    <h2>📚 Strumenti per lo studio</h2>
 
-  <div class="grid">
+    <div class="grid">
 
-    <section class="tool-card" data-name="media scolastica scuola voti">
-      <h3>Media scolastica</h3>
-      <input id="voti" type="text" placeholder="Esempio: 7, 8, 6.5">
-      <button onclick="calcolaMedia()">Calcola</button>
-      <p id="risultatoMedia"></p>
-    </section>
+      <section class="tool-card" data-name="media scolastica scuola voti studio">
+        <h3>Media scolastica</h3>
+        <input id="voti" type="text" placeholder="Esempio: 7, 8, 6.5">
+        <button onclick="calcolaMedia()">Calcola</button>
+        <p id="risultatoMedia"></p>
+      </section>
 
-    <section class="tool-card" data-name="percentuale calcolo">
-      <h3>Percentuale</h3>
-      <input id="numero" type="number" placeholder="Numero">
-      <input id="percentuale" type="number" placeholder="Percentuale">
-      <button onclick="calcolaPercentuale()">Calcola</button>
-      <p id="risultatoPercentuale"></p>
-    </section>
+      <section class="tool-card" data-name="media universitaria esami crediti cfu">
+        <h3>Media universitaria</h3>
+        <input id="votiUni" type="text" placeholder="Voti esami: 24, 28, 30">
+        <input id="cfuUni" type="text" placeholder="CFU esami: 6, 9, 12">
+        <button onclick="calcolaMediaUniversitaria()">Calcola</button>
+        <p id="risultatoMediaUni"></p>
+      </section>
 
-    <section class="tool-card" data-name="sconto prezzo">
-      <h3>Calcolo sconto</h3>
-      <input id="prezzo" type="number" placeholder="Prezzo iniziale">
-      <input id="sconto" type="number" placeholder="Sconto %">
-      <button onclick="calcolaSconto()">Calcola</button>
-      <p id="risultatoSconto"></p>
-    </section>
+      <section class="tool-card" data-name="cfu crediti università esami">
+        <h3>Calcolo CFU totali</h3>
+        <input id="listaCfu" type="text" placeholder="Esempio: 6, 9, 12, 6">
+        <button onclick="calcolaCFU()">Calcola</button>
+        <p id="risultatoCFU"></p>
+      </section>
 
-    <section class="tool-card" data-name="iva tasse prezzo">
-      <h3>Calcolo IVA</h3>
-      <input id="prezzoIva" type="number" placeholder="Prezzo senza IVA">
-      <input id="iva" type="number" placeholder="IVA %">
-      <button onclick="calcolaIva()">Calcola</button>
-      <p id="risultatoIva"></p>
-    </section>
+      <section class="tool-card" data-name="voto laurea università media base">
+        <h3>Simulatore voto laurea</h3>
+        <input id="mediaLaurea" type="number" placeholder="Media in trentesimi">
+        <input id="puntiTesi" type="number" placeholder="Punti tesi">
+        <button onclick="calcolaVotoLaurea()">Calcola</button>
+        <p id="risultatoLaurea"></p>
+      </section>
 
-    <section class="tool-card" data-name="stipendio annuo mensile settimanale lavoro">
-      <h3>Stipendio annuo</h3>
-      <input id="stipendio" type="number" placeholder="Importo">
-      <select id="tipoStipendio">
-        <option value="settimanale">Settimanale</option>
-        <option value="mensile">Mensile</option>
-      </select>
-      <button onclick="calcolaStipendio()">Calcola</button>
-      <p id="risultatoStipendio"></p>
-    </section>
+    </div>
+  </section>
 
-    <section class="tool-card" data-name="eta anni data nascita">
-      <h3>Calcolo età</h3>
-      <input id="dataNascita" type="date">
-      <button onclick="calcolaEta()">Calcola</button>
-      <p id="risultatoEta"></p>
-    </section>
+  <section class="category" id="lavoro">
+    <h2>💼 Strumenti per lavoro</h2>
 
-    <section class="tool-card" data-name="bmi peso altezza salute">
-      <h3>Calcolo BMI</h3>
-      <input id="peso" type="number" placeholder="Peso in kg">
-      <input id="altezza" type="number" placeholder="Altezza in cm">
-      <button onclick="calcolaBMI()">Calcola</button>
-      <p id="risultatoBMI"></p>
-    </section>
+    <div class="grid">
 
-    <section class="tool-card" data-name="risparmio mensile annuale soldi">
-      <h3>Risparmio annuale</h3>
-      <input id="risparmioMensile" type="number" placeholder="Risparmio mensile">
-      <button onclick="calcolaRisparmio()">Calcola</button>
-      <p id="risultatoRisparmio"></p>
-    </section>
+      <section class="tool-card" data-name="stipendio annuo mensile settimanale lavoro">
+        <h3>Stipendio annuo</h3>
+        <input id="stipendio" type="number" placeholder="Importo">
+        <select id="tipoStipendio">
+          <option value="settimanale">Settimanale</option>
+          <option value="mensile">Mensile</option>
+        </select>
+        <button onclick="calcolaStipendio()">Calcola</button>
+        <p id="risultatoStipendio"></p>
+      </section>
 
-  </div>
+    </div>
+  </section>
+
+  <section class="category" id="finanza">
+    <h2>💰 Strumenti per finanza</h2>
+
+    <div class="grid">
+
+      <section class="tool-card" data-name="percentuale calcolo matematica">
+        <h3>Percentuale</h3>
+        <input id="numero" type="number" placeholder="Numero">
+        <input id="percentuale" type="number" placeholder="Percentuale">
+        <button onclick="calcolaPercentuale()">Calcola</button>
+        <p id="risultatoPercentuale"></p>
+      </section>
+
+      <section class="tool-card" data-name="sconto prezzo offerte saldi">
+        <h3>Calcolo sconto</h3>
+        <input id="prezzo" type="number" placeholder="Prezzo iniziale">
+        <input id="sconto" type="number" placeholder="Sconto %">
+        <button onclick="calcolaSconto()">Calcola</button>
+        <p id="risultatoSconto"></p>
+      </section>
+
+      <section class="tool-card" data-name="iva tasse prezzo">
+        <h3>Calcolo IVA</h3>
+        <input id="prezzoIva" type="number" placeholder="Prezzo senza IVA">
+        <input id="iva" type="number" placeholder="IVA %">
+        <button onclick="calcolaIva()">Calcola</button>
+        <p id="risultatoIva"></p>
+      </section>
+
+      <section class="tool-card" data-name="risparmio mensile annuale soldi">
+        <h3>Risparmio annuale</h3>
+        <input id="risparmioMensile" type="number" placeholder="Risparmio mensile">
+        <button onclick="calcolaRisparmio()">Calcola</button>
+        <p id="risultatoRisparmio"></p>
+      </section>
+
+    </div>
+  </section>
+
+  <section class="category" id="salute">
+    <h2>❤️ Strumenti salute e utility</h2>
+
+    <div class="grid">
+
+      <section class="tool-card" data-name="eta anni data nascita compleanno">
+        <h3>Calcolo età</h3>
+        <input id="dataNascita" type="date">
+        <button onclick="calcolaEta()">Calcola</button>
+        <p id="risultatoEta"></p>
+      </section>
+
+      <section class="tool-card" data-name="bmi peso altezza salute">
+        <h3>Calcolo BMI</h3>
+        <input id="peso" type="number" placeholder="Peso in kg">
+        <input id="altezza" type="number" placeholder="Altezza in cm">
+        <button onclick="calcolaBMI()">Calcola</button>
+        <p id="risultatoBMI"></p>
+      </section>
+
+    </div>
+  </section>
 
 </main>
 
 <footer>
-  <p>© 2026 ToolBox - Strumenti online gratuiti</p>
+  <h3>ToolBox</h3>
+  <p>Strumenti online gratuiti per studenti, universitari e vita quotidiana.</p>
+  <p>© 2026 ToolBox</p>
 </footer>
 
 <script src="script.js"></script>

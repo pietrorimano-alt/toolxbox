@@ -1,10 +1,12 @@
-function calcolaMedia() {
-  const input = document.getElementById("voti").value;
-
-  const voti = input
+function pulisciLista(input) {
+  return input
     .split(",")
-    .map(voto => parseFloat(voto.trim()))
-    .filter(voto => !isNaN(voto));
+    .map(valore => parseFloat(valore.trim()))
+    .filter(valore => !isNaN(valore));
+}
+
+function calcolaMedia() {
+  const voti = pulisciLista(document.getElementById("voti").value);
 
   if (voti.length === 0) {
     document.getElementById("risultatoMedia").innerText = "Inserisci almeno un voto valido.";
@@ -16,6 +18,60 @@ function calcolaMedia() {
 
   document.getElementById("risultatoMedia").innerText =
     "La media è: " + media.toFixed(2);
+}
+
+function calcolaMediaUniversitaria() {
+  const voti = pulisciLista(document.getElementById("votiUni").value);
+  const cfu = pulisciLista(document.getElementById("cfuUni").value);
+
+  if (voti.length === 0 || cfu.length === 0 || voti.length !== cfu.length) {
+    document.getElementById("risultatoMediaUni").innerText =
+      "Inserisci lo stesso numero di voti e CFU.";
+    return;
+  }
+
+  let sommaPesata = 0;
+  let totaleCFU = 0;
+
+  for (let i = 0; i < voti.length; i++) {
+    sommaPesata += voti[i] * cfu[i];
+    totaleCFU += cfu[i];
+  }
+
+  const media = sommaPesata / totaleCFU;
+
+  document.getElementById("risultatoMediaUni").innerText =
+    "Media ponderata: " + media.toFixed(2) + " | CFU totali: " + totaleCFU;
+}
+
+function calcolaCFU() {
+  const cfu = pulisciLista(document.getElementById("listaCfu").value);
+
+  if (cfu.length === 0) {
+    document.getElementById("risultatoCFU").innerText = "Inserisci almeno un CFU valido.";
+    return;
+  }
+
+  const totale = cfu.reduce((somma, valore) => somma + valore, 0);
+
+  document.getElementById("risultatoCFU").innerText =
+    "CFU totali: " + totale;
+}
+
+function calcolaVotoLaurea() {
+  const media = parseFloat(document.getElementById("mediaLaurea").value);
+  const puntiTesi = parseFloat(document.getElementById("puntiTesi").value);
+
+  if (isNaN(media) || isNaN(puntiTesi)) {
+    document.getElementById("risultatoLaurea").innerText = "Inserisci valori validi.";
+    return;
+  }
+
+  const base = (media * 110) / 30;
+  const votoFinale = base + puntiTesi;
+
+  document.getElementById("risultatoLaurea").innerText =
+    "Base: " + base.toFixed(2) + " | Voto stimato: " + votoFinale.toFixed(2) + "/110";
 }
 
 function calcolaPercentuale() {
@@ -74,7 +130,7 @@ function calcolaStipendio() {
     return;
   }
 
-  let annuo = tipo === "settimanale" ? stipendio * 52 : stipendio * 12;
+  const annuo = tipo === "settimanale" ? stipendio * 52 : stipendio * 12;
 
   document.getElementById("risultatoStipendio").innerText =
     "Guadagno annuo: €" + annuo.toFixed(2);
