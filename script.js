@@ -191,6 +191,7 @@ function calcolaRisparmio() {
 document.getElementById("searchInput").addEventListener("input", function () {
   const ricerca = this.value.toLowerCase();
   const strumenti = document.querySelectorAll(".tool-card");
+  const categorie = document.querySelectorAll(".category");
 
   strumenti.forEach(tool => {
     const nome = tool.getAttribute("data-name").toLowerCase();
@@ -202,62 +203,14 @@ document.getElementById("searchInput").addEventListener("input", function () {
       tool.style.display = "none";
     }
   });
-});
-const barraRicerca = document.getElementById("searchInput");
 
-barraRicerca.addEventListener("keypress", function(e) {
+  categorie.forEach(categoria => {
+    const strumentiVisibili = categoria.querySelectorAll(".tool-card[style='display: block;']");
 
-  if (e.key === "Enter") {
-
-    const testo = barraRicerca.value.toLowerCase();
-
-    if (testo.includes("cfu")) {
-      document.getElementById("cfu").scrollIntoView({
-        behavior: "smooth"
-      });
+    if (ricerca === "" || strumentiVisibili.length > 0) {
+      categoria.style.display = "block";
+    } else {
+      categoria.style.display = "none";
     }
-
-    else if (testo.includes("bmi")) {
-      document.getElementById("bmi").scrollIntoView({
-        behavior: "smooth"
-      });
-    }
-
-    else if (testo.includes("laurea")) {
-      document.getElementById("voto-laurea").scrollIntoView({
-        behavior: "smooth"
-      });
-    }
-
-    else if (testo.includes("universitaria")) {
-      document.getElementById("media-universitaria").scrollIntoView({
-        behavior: "smooth"
-      });
-    }
-
-    else if (testo.includes("scolastica")) {
-      document.getElementById("media-scolastica").scrollIntoView({
-        behavior: "smooth"
-      });
-    }
-
-    else if (testo.includes("iva")) {
-      document.getElementById("iva").scrollIntoView({
-        behavior: "smooth"
-      });
-    }
-
-    else if (testo.includes("stipendio")) {
-      document.getElementById("stipendio-annuo").scrollIntoView({
-        behavior: "smooth"
-      });
-    }
-
-    else if (testo.includes("eta")) {
-      document.getElementById("eta").scrollIntoView({
-        behavior: "smooth"
-      });
-    }
-  }
-
+  });
 });
