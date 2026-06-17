@@ -188,8 +188,10 @@ function calcolaRisparmio() {
     "Risparmio annuale: €" + annuale.toFixed(2);
 }
 
-document.getElementById("searchInput").addEventListener("input", function () {
-  const ricerca = this.value.toLowerCase();
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("input", function () {
+  const ricerca = this.value.toLowerCase().trim();
   const strumenti = document.querySelectorAll(".tool-card");
   const categorie = document.querySelectorAll(".category");
 
@@ -197,7 +199,7 @@ document.getElementById("searchInput").addEventListener("input", function () {
     const nome = tool.getAttribute("data-name").toLowerCase();
     const titolo = tool.querySelector("h3").innerText.toLowerCase();
 
-    if (nome.includes(ricerca) || titolo.includes(ricerca)) {
+    if (ricerca === "" || nome.includes(ricerca) || titolo.includes(ricerca)) {
       tool.style.display = "block";
     } else {
       tool.style.display = "none";
@@ -213,4 +215,17 @@ document.getElementById("searchInput").addEventListener("input", function () {
       categoria.style.display = "none";
     }
   });
+});
+
+searchInput.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    const primoRisultato = document.querySelector(".tool-card[style='display: block;']");
+
+    if (primoRisultato) {
+      primoRisultato.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }
+  }
 });
