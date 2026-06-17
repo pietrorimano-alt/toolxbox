@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>ToolRapidi - Strumenti online gratis</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>ToolRapidi</h1>
+    <p>Strumenti semplici e gratuiti per calcoli veloci</p>
+  </header>
+
+  <main>
+
+    <section class="tool">
+      <h2>Calcolo media scolastica</h2>
+      <input id="voti" type="text" placeholder="Esempio: 7, 8, 6.5, 9">
+      <button onclick="calcolaMedia()">Calcola media</button>
+      <p id="risultatoMedia"></p>
+    </section>
+
+    <section class="tool">
+      <h2>Calcolo percentuale</h2>
+      <input id="numero" type="number" placeholder="Numero">
+      <input id="percentuale" type="number" placeholder="Percentuale">
+      <button onclick="calcolaPercentuale()">Calcola</button>
+      <p id="risultatoPercentuale"></p>
+    </section>
+
+    <section class="tool">
+      <h2>Calcolo stipendio annuo</h2>
+      <input id="stipendio" type="number" placeholder="Stipendio">
+      <select id="tipoStipendio">
+        <option value="settimanale">Settimanale</option>
+        <option value="mensile">Mensile</option>
+      </select>
+      <button onclick="calcolaStipendio()">Calcola</button>
+      <p id="risultatoStipendio"></p>
+    </section>
+
+    <section class="tool">
+      <h2>Calcolo età</h2>
+      <input id="dataNascita" type="date">
+      <button onclick="calcolaEta()">Calcola età</button>
+      <p id="risultatoEta"></p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 ToolRapidi</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
