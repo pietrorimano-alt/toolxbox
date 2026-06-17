@@ -203,3 +203,61 @@ document.getElementById("searchInput").addEventListener("input", function () {
     }
   });
 });
+const barraRicerca = document.getElementById("searchInput");
+
+barraRicerca.addEventListener("keypress", function(e) {
+
+  if (e.key === "Enter") {
+
+    const testo = barraRicerca.value.toLowerCase();
+
+    if (testo.includes("cfu")) {
+      document.getElementById("cfu").scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    else if (testo.includes("bmi")) {
+      document.getElementById("bmi").scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    else if (testo.includes("laurea")) {
+      document.getElementById("voto-laurea").scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    else if (testo.includes("universitaria")) {
+      document.getElementById("media-universitaria").scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    else if (testo.includes("scolastica")) {
+      document.getElementById("media-scolastica").scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    else if (testo.includes("iva")) {
+      document.getElementById("iva").scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    else if (testo.includes("stipendio")) {
+      document.getElementById("stipendio-annuo").scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    else if (testo.includes("eta")) {
+      document.getElementById("eta").scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+  }
+
+});
