@@ -5,6 +5,8 @@ function pulisciLista(input) {
     .filter(valore => !isNaN(valore));
 }
 
+/* STUDENTI */
+
 function calcolaMedia() {
   const voti = pulisciLista(document.getElementById("voti").value);
 
@@ -113,10 +115,10 @@ function calcolaVotoMinimo() {
 
   if (votoNecessario > 30) {
     document.getElementById("risultatoVotoMinimo").innerText =
-      "Per raggiungere questa media servirebbe " + votoNecessario.toFixed(2) + ", quindi non è possibile con un solo esame.";
+      "Servirebbe " + votoNecessario.toFixed(2) + ", quindi non è possibile con un solo esame.";
   } else if (votoNecessario < 18) {
     document.getElementById("risultatoVotoMinimo").innerText =
-      "Ti basterebbe almeno 18. Il voto teorico richiesto sarebbe " + votoNecessario.toFixed(2) + ".";
+      "Ti basterebbe almeno 18. Voto teorico richiesto: " + votoNecessario.toFixed(2) + ".";
   } else {
     document.getElementById("risultatoVotoMinimo").innerText =
       "Devi prendere almeno " + votoNecessario.toFixed(2) + " al prossimo esame.";
@@ -135,14 +137,13 @@ function calcolaCFUMancanti() {
 
   const mancanti = totali - conseguiti;
 
-  if (mancanti <= 0) {
-    document.getElementById("risultatoCFUMancanti").innerText =
-      "Hai raggiunto o superato i CFU richiesti.";
-  } else {
-    document.getElementById("risultatoCFUMancanti").innerText =
-      "Ti mancano " + mancanti + " CFU.";
-  }
+  document.getElementById("risultatoCFUMancanti").innerText =
+    mancanti <= 0
+      ? "Hai raggiunto o superato i CFU richiesti."
+      : "Ti mancano " + mancanti + " CFU.";
 }
+
+/* FINANZA */
 
 function calcolaPercentuale() {
   const numero = parseFloat(document.getElementById("numero").value);
@@ -191,6 +192,83 @@ function calcolaIva() {
     "Totale con IVA: €" + totale.toFixed(2) + " | IVA: €" + valoreIva.toFixed(2);
 }
 
+function calcolaRisparmio() {
+  const mensile = parseFloat(document.getElementById("risparmioMensile").value);
+
+  if (isNaN(mensile)) {
+    document.getElementById("risultatoRisparmio").innerText = "Inserisci un importo valido.";
+    return;
+  }
+
+  const annuale = mensile * 12;
+
+  document.getElementById("risultatoRisparmio").innerText =
+    "Risparmio annuale: €" + annuale.toFixed(2);
+}
+
+function calcolaInteresseComposto() {
+  const capitale = parseFloat(document.getElementById("capitaleIniziale").value);
+  const tasso = parseFloat(document.getElementById("tassoInteresse").value);
+  const anni = parseFloat(document.getElementById("anniInvestimento").value);
+
+  if (isNaN(capitale) || isNaN(tasso) || isNaN(anni) || capitale <= 0 || anni <= 0) {
+    document.getElementById("risultatoInteresseComposto").innerText =
+      "Inserisci valori validi.";
+    return;
+  }
+
+  const finale = capitale * Math.pow(1 + tasso / 100, anni);
+  const guadagno = finale - capitale;
+
+  document.getElementById("risultatoInteresseComposto").innerText =
+    "Capitale finale: €" + finale.toFixed(2) + " | Guadagno: €" + guadagno.toFixed(2);
+}
+
+function calcolaObiettivoRisparmio() {
+  const obiettivo = parseFloat(document.getElementById("obiettivoRisparmio").value);
+  const mesi = parseFloat(document.getElementById("mesiRisparmio").value);
+
+  if (isNaN(obiettivo) || isNaN(mesi) || obiettivo <= 0 || mesi <= 0) {
+    document.getElementById("risultatoObiettivoRisparmio").innerText =
+      "Inserisci valori validi.";
+    return;
+  }
+
+  const mensile = obiettivo / mesi;
+
+  document.getElementById("risultatoObiettivoRisparmio").innerText =
+    "Devi risparmiare circa €" + mensile.toFixed(2) + " al mese.";
+}
+
+function calcolaRataPrestito() {
+  const importo = parseFloat(document.getElementById("importoPrestito").value);
+  const tassoAnnuo = parseFloat(document.getElementById("tassoPrestito").value);
+  const anni = parseFloat(document.getElementById("anniPrestito").value);
+
+  if (isNaN(importo) || isNaN(tassoAnnuo) || isNaN(anni) || importo <= 0 || anni <= 0) {
+    document.getElementById("risultatoRataPrestito").innerText =
+      "Inserisci valori validi.";
+    return;
+  }
+
+  const mesi = anni * 12;
+  const tassoMensile = tassoAnnuo / 100 / 12;
+
+  let rata;
+
+  if (tassoMensile === 0) {
+    rata = importo / mesi;
+  } else {
+    rata = importo * (tassoMensile * Math.pow(1 + tassoMensile, mesi)) /
+      (Math.pow(1 + tassoMensile, mesi) - 1);
+  }
+
+  document.getElementById("risultatoRataPrestito").innerText =
+    "Rata mensile stimata: €" + rata.toFixed(2);
+}
+
+/* LAVORO */
+
 function calcolaStipendio() {
   const stipendio = parseFloat(document.getElementById("stipendio").value);
   const tipo = document.getElementById("tipoStipendio").value;
@@ -205,6 +283,59 @@ function calcolaStipendio() {
   document.getElementById("risultatoStipendio").innerText =
     "Guadagno annuo: €" + annuo.toFixed(2);
 }
+
+function calcolaMensile() {
+  const annuo = parseFloat(document.getElementById("stipendioAnnuo").value);
+
+  if (isNaN(annuo)) {
+    document.getElementById("risultatoMensile").innerText = "Inserisci un valore valido.";
+    return;
+  }
+
+  document.getElementById("risultatoMensile").innerText =
+    "Stipendio mensile: €" + (annuo / 12).toFixed(2);
+}
+
+function calcolaGuadagnoOrario() {
+  const stipendio = parseFloat(document.getElementById("stipendioMensile").value);
+  const ore = parseFloat(document.getElementById("oreMensili").value);
+
+  if (isNaN(stipendio) || isNaN(ore) || ore <= 0) {
+    document.getElementById("risultatoOrario").innerText = "Inserisci valori validi.";
+    return;
+  }
+
+  document.getElementById("risultatoOrario").innerText =
+    "Guadagno orario: €" + (stipendio / ore).toFixed(2);
+}
+
+function calcolaOreMese() {
+  const oreGiorno = parseFloat(document.getElementById("oreGiornaliere").value);
+  const giorni = parseFloat(document.getElementById("giorniLavorativi").value);
+
+  if (isNaN(oreGiorno) || isNaN(giorni)) {
+    document.getElementById("risultatoOreMese").innerText = "Inserisci valori validi.";
+    return;
+  }
+
+  document.getElementById("risultatoOreMese").innerText =
+    "Ore lavorate nel mese: " + (oreGiorno * giorni);
+}
+
+function calcolaStraordinario() {
+  const paga = parseFloat(document.getElementById("pagaOraria").value);
+  const oreExtra = parseFloat(document.getElementById("oreExtra").value);
+
+  if (isNaN(paga) || isNaN(oreExtra)) {
+    document.getElementById("risultatoStraordinario").innerText = "Inserisci valori validi.";
+    return;
+  }
+
+  document.getElementById("risultatoStraordinario").innerText =
+    "Compenso straordinario: €" + (paga * oreExtra).toFixed(2);
+}
+
+/* SALUTE */
 
 function calcolaEta() {
   const data = document.getElementById("dataNascita").value;
@@ -244,19 +375,53 @@ function calcolaBMI() {
     "Il tuo BMI è: " + bmi.toFixed(2);
 }
 
-function calcolaRisparmio() {
-  const mensile = parseFloat(document.getElementById("risparmioMensile").value);
+function calcolaAcqua() {
+  const peso = parseFloat(document.getElementById("pesoAcqua").value);
 
-  if (isNaN(mensile)) {
-    document.getElementById("risultatoRisparmio").innerText = "Inserisci un importo valido.";
+  if (isNaN(peso) || peso <= 0) {
+    document.getElementById("risultatoAcqua").innerText =
+      "Inserisci un peso valido.";
     return;
   }
 
-  const annuale = mensile * 12;
+  const acqua = peso * 0.035;
 
-  document.getElementById("risultatoRisparmio").innerText =
-    "Risparmio annuale: €" + annuale.toFixed(2);
+  document.getElementById("risultatoAcqua").innerText =
+    "Dovresti bere circa " + acqua.toFixed(2) + " litri al giorno.";
 }
+
+function calcolaCalorie() {
+  const peso = parseFloat(document.getElementById("pesoCalorie").value);
+
+  if (isNaN(peso) || peso <= 0) {
+    document.getElementById("risultatoCalorie").innerText =
+      "Inserisci un peso valido.";
+    return;
+  }
+
+  const calorie = peso * 30;
+
+  document.getElementById("risultatoCalorie").innerText =
+    "Fabbisogno stimato: " + calorie.toFixed(0) + " kcal/giorno.";
+}
+
+function calcolaPesoIdeale() {
+  const altezza = parseFloat(document.getElementById("altezzaIdeale").value);
+
+  if (isNaN(altezza) || altezza <= 0) {
+    document.getElementById("risultatoPesoIdeale").innerText =
+      "Inserisci un'altezza valida.";
+    return;
+  }
+
+  const altezzaM = altezza / 100;
+  const pesoIdeale = 22 * (altezzaM * altezzaM);
+
+  document.getElementById("risultatoPesoIdeale").innerText =
+    "Peso ideale stimato: " + pesoIdeale.toFixed(1) + " kg";
+}
+
+/* RICERCA */
 
 const searchInput = document.getElementById("searchInput");
 
