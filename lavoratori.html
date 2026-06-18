@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToolBox Lavoratori</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <nav>
+    <a href="index.html" class="logo">🧰 ToolBox</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="studenti.html">Studenti</a>
+      <a href="lavoratori.html">Lavoratori</a>
+      <a href="finanza.html">Finanza</a>
+      <a href="salute.html">Salute</a>
+    </div>
+  </nav>
+
+  <div class="hero-content">
+    <span class="badge">Area lavoro</span>
+    <h2>Strumenti per lavoratori</h2>
+    <p>Calcola stipendi, ore lavorate e guadagni.</p>
+  </div>
+</header>
+
+<main>
+
+<section class="category">
+<h2>💼 Lavoro</h2>
+
+<div class="grid">
+
+<section class="tool-card">
+<h3>Stipendio annuo</h3>
+
+<input id="stipendio" type="number" placeholder="Importo">
+
+<select id="tipoStipendio">
+<option value="settimanale">Settimanale</option>
+<option value="mensile">Mensile</option>
+</select>
+
+<button onclick="calcolaStipendio()">Calcola</button>
+
+<p id="risultatoStipendio"></p>
+
+</section>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+<p>© 2026 ToolBox - Area Lavoratori</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

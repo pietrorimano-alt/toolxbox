@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToolBox Studenti - Strumenti per università e scuola</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <nav>
+    <a href="index.html" class="logo">🧰 ToolBox</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="studenti.html">Studenti</a>
+      <a href="lavoratori.html">Lavoratori</a>
+      <a href="finanza.html">Finanza</a>
+      <a href="salute.html">Salute</a>
+    </div>
+  </nav>
+
+  <div class="hero-content">
+    <span class="badge">Area studenti</span>
+    <h2>Strumenti per studenti e universitari</h2>
+    <p>Calcola media scolastica, media universitaria, CFU e voto di laurea.</p>
+    <input id="searchInput" type="text" placeholder="Cerca uno strumento...">
+  </div>
+</header>
+
+<main>
+
+  <section class="category" id="studio">
+    <h2>📚 Strumenti studio</h2>
+
+    <div class="grid">
+
+      <section id="media-scolastica" class="tool-card" data-name="media scolastica scuola voti studio">
+        <h3>Media scolastica</h3>
+        <input id="voti" type="text" placeholder="Esempio: 7, 8, 6.5">
+        <button onclick="calcolaMedia()">Calcola</button>
+        <p id="risultatoMedia"></p>
+      </section>
+
+      <section id="media-universitaria" class="tool-card" data-name="media universitaria esami crediti cfu">
+        <h3>Media universitaria</h3>
+        <input id="votiUni" type="text" placeholder="Voti esami: 24, 28, 30">
+        <input id="cfuUni" type="text" placeholder="CFU esami: 6, 9, 12">
+        <button onclick="calcolaMediaUniversitaria()">Calcola</button>
+        <p id="risultatoMediaUni"></p>
+      </section>
+
+      <section id="cfu" class="tool-card" data-name="cfu crediti università esami">
+        <h3>Calcolo CFU totali</h3>
+        <input id="listaCfu" type="text" placeholder="Esempio: 6, 9, 12, 6">
+        <button onclick="calcolaCFU()">Calcola</button>
+        <p id="risultatoCFU"></p>
+      </section>
+
+      <section id="voto-laurea" class="tool-card" data-name="voto laurea università media base">
+        <h3>Simulatore voto laurea</h3>
+        <input id="mediaLaurea" type="number" placeholder="Media in trentesimi">
+        <input id="puntiTesi" type="number" placeholder="Punti tesi">
+        <button onclick="calcolaVotoLaurea()">Calcola</button>
+        <p id="risultatoLaurea"></p>
+      </section>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 ToolBox - Area Studenti</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

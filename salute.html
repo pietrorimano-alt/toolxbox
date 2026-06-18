@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToolBox Salute</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <nav>
+    <a href="index.html" class="logo">🧰 ToolBox</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="studenti.html">Studenti</a>
+      <a href="lavoratori.html">Lavoratori</a>
+      <a href="finanza.html">Finanza</a>
+      <a href="salute.html">Salute</a>
+    </div>
+  </nav>
+
+  <div class="hero-content">
+    <span class="badge">Area salute</span>
+    <h2>Strumenti salute e benessere</h2>
+    <p>Calcola BMI, età e altri strumenti utili per il benessere quotidiano.</p>
+  </div>
+</header>
+
+<main>
+
+<section class="category">
+<h2>❤️ Salute e utility</h2>
+
+<div class="grid">
+
+<section class="tool-card">
+<h3>Calcolo età</h3>
+
+<input id="dataNascita" type="date">
+
+<button onclick="calcolaEta()">Calcola</button>
+
+<p id="risultatoEta"></p>
+
+</section>
+
+<section class="tool-card">
+<h3>Calcolo BMI</h3>
+
+<input id="peso" type="number" placeholder="Peso in kg">
+<input id="altezza" type="number" placeholder="Altezza in cm">
+
+<button onclick="calcolaBMI()">Calcola</button>
+
+<p id="risultatoBMI"></p>
+
+</section>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+<p>© 2026 ToolBox - Area Salute</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

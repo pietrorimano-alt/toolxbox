@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToolBox Finanza</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <nav>
+    <a href="index.html" class="logo">🧰 ToolBox</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="studenti.html">Studenti</a>
+      <a href="lavoratori.html">Lavoratori</a>
+      <a href="finanza.html">Finanza</a>
+      <a href="salute.html">Salute</a>
+    </div>
+  </nav>
+
+  <div class="hero-content">
+    <span class="badge">Area finanza</span>
+    <h2>Strumenti finanziari</h2>
+    <p>Calcola IVA, sconti, percentuali e risparmi.</p>
+  </div>
+</header>
+
+<main>
+
+<section class="category">
+<h2>💰 Finanza</h2>
+
+<div class="grid">
+
+<section class="tool-card">
+<h3>Percentuale</h3>
+
+<input id="numero" type="number" placeholder="Numero">
+<input id="percentuale" type="number" placeholder="Percentuale">
+
+<button onclick="calcolaPercentuale()">Calcola</button>
+
+<p id="risultatoPercentuale"></p>
+
+</section>
+
+<section class="tool-card">
+<h3>Calcolo sconto</h3>
+
+<input id="prezzo" type="number" placeholder="Prezzo iniziale">
+<input id="sconto" type="number" placeholder="Sconto %">
+
+<button onclick="calcolaSconto()">Calcola</button>
+
+<p id="risultatoSconto"></p>
+
+</section>
+
+<section class="tool-card">
+<h3>Calcolo IVA</h3>
+
+<input id="prezzoIva" type="number" placeholder="Prezzo senza IVA">
+<input id="iva" type="number" placeholder="IVA %">
+
+<button onclick="calcolaIva()">Calcola</button>
+
+<p id="risultatoIva"></p>
+
+</section>
+
+<section class="tool-card">
+<h3>Risparmio annuale</h3>
+
+<input id="risparmioMensile" type="number" placeholder="Risparmio mensile">
+
+<button onclick="calcolaRisparmio()">Calcola</button>
+
+<p id="risultatoRisparmio"></p>
+
+</section>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+<p>© 2026 ToolBox - Area Finanza</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
