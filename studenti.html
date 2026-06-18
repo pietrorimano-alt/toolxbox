@@ -23,14 +23,16 @@
   <div class="hero-content">
     <span class="badge">Area studenti</span>
     <h2>Strumenti per studenti e universitari</h2>
-    <p>Calcola media scolastica, media universitaria, CFU e voto di laurea.</p>
+    <p>Calcola media scolastica, media universitaria, CFU, voto di laurea e obiettivi universitari.</p>
+
     <input id="searchInput" type="text" placeholder="Cerca uno strumento...">
-     <div class="stats">
+
+    <div class="stats">
       <a href="studenti.html">📚 Studenti</a>
       <a href="lavoratori.html">💼 Lavoratori</a>
       <a href="finanza.html">💰 Finanza</a>
       <a href="salute.html">❤️ Salute</a>
-   </div>
+    </div>
   </div>
 </header>
 
@@ -69,6 +71,31 @@
         <input id="puntiTesi" type="number" placeholder="Punti tesi">
         <button onclick="calcolaVotoLaurea()">Calcola</button>
         <p id="risultatoLaurea"></p>
+      </section>
+
+      <section id="conversione-voto" class="tool-card" data-name="conversione voto trentesimi centodecimi 30 110">
+        <h3>Conversione 30 → 110</h3>
+        <input id="votoTrentesimi" type="number" placeholder="Voto in trentesimi">
+        <button onclick="convertiTrentaCentodieci()">Converti</button>
+        <p id="risultatoConversioneVoto"></p>
+      </section>
+
+      <section id="voto-minimo" class="tool-card" data-name="voto minimo prossimo esame media obiettivo università">
+        <h3>Voto minimo prossimo esame</h3>
+        <input id="mediaAttuale" type="number" placeholder="Media attuale">
+        <input id="cfuAttuali" type="number" placeholder="CFU attuali">
+        <input id="cfuProssimo" type="number" placeholder="CFU prossimo esame">
+        <input id="mediaObiettivo" type="number" placeholder="Media obiettivo">
+        <button onclick="calcolaVotoMinimo()">Calcola</button>
+        <p id="risultatoVotoMinimo"></p>
+      </section>
+
+      <section id="cfu-mancanti" class="tool-card" data-name="cfu mancanti laurea università crediti esami">
+        <h3>CFU mancanti alla laurea</h3>
+        <input id="cfuConseguiti" type="number" placeholder="CFU conseguiti">
+        <input id="cfuTotaliLaurea" type="number" placeholder="CFU totali laurea, es. 180">
+        <button onclick="calcolaCFUMancanti()">Calcola</button>
+        <p id="risultatoCFUMancanti"></p>
       </section>
 
     </div>

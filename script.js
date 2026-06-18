@@ -74,6 +74,76 @@ function calcolaVotoLaurea() {
     "Base: " + base.toFixed(2) + " | Voto stimato: " + votoFinale.toFixed(2) + "/110";
 }
 
+function convertiTrentaCentodieci() {
+  const voto = parseFloat(document.getElementById("votoTrentesimi").value);
+
+  if (isNaN(voto) || voto < 0 || voto > 30) {
+    document.getElementById("risultatoConversioneVoto").innerText =
+      "Inserisci un voto valido tra 0 e 30.";
+    return;
+  }
+
+  const risultato = (voto * 110) / 30;
+
+  document.getElementById("risultatoConversioneVoto").innerText =
+    voto + "/30 corrisponde a circa " + risultato.toFixed(2) + "/110";
+}
+
+function calcolaVotoMinimo() {
+  const mediaAttuale = parseFloat(document.getElementById("mediaAttuale").value);
+  const cfuAttuali = parseFloat(document.getElementById("cfuAttuali").value);
+  const cfuProssimo = parseFloat(document.getElementById("cfuProssimo").value);
+  const mediaObiettivo = parseFloat(document.getElementById("mediaObiettivo").value);
+
+  if (
+    isNaN(mediaAttuale) ||
+    isNaN(cfuAttuali) ||
+    isNaN(cfuProssimo) ||
+    isNaN(mediaObiettivo) ||
+    cfuAttuali <= 0 ||
+    cfuProssimo <= 0
+  ) {
+    document.getElementById("risultatoVotoMinimo").innerText =
+      "Inserisci valori validi.";
+    return;
+  }
+
+  const votoNecessario =
+    ((mediaObiettivo * (cfuAttuali + cfuProssimo)) - (mediaAttuale * cfuAttuali)) / cfuProssimo;
+
+  if (votoNecessario > 30) {
+    document.getElementById("risultatoVotoMinimo").innerText =
+      "Per raggiungere questa media servirebbe " + votoNecessario.toFixed(2) + ", quindi non è possibile con un solo esame.";
+  } else if (votoNecessario < 18) {
+    document.getElementById("risultatoVotoMinimo").innerText =
+      "Ti basterebbe almeno 18. Il voto teorico richiesto sarebbe " + votoNecessario.toFixed(2) + ".";
+  } else {
+    document.getElementById("risultatoVotoMinimo").innerText =
+      "Devi prendere almeno " + votoNecessario.toFixed(2) + " al prossimo esame.";
+  }
+}
+
+function calcolaCFUMancanti() {
+  const conseguiti = parseFloat(document.getElementById("cfuConseguiti").value);
+  const totali = parseFloat(document.getElementById("cfuTotaliLaurea").value);
+
+  if (isNaN(conseguiti) || isNaN(totali) || totali <= 0 || conseguiti < 0) {
+    document.getElementById("risultatoCFUMancanti").innerText =
+      "Inserisci valori validi.";
+    return;
+  }
+
+  const mancanti = totali - conseguiti;
+
+  if (mancanti <= 0) {
+    document.getElementById("risultatoCFUMancanti").innerText =
+      "Hai raggiunto o superato i CFU richiesti.";
+  } else {
+    document.getElementById("risultatoCFUMancanti").innerText =
+      "Ti mancano " + mancanti + " CFU.";
+  }
+}
+
 function calcolaPercentuale() {
   const numero = parseFloat(document.getElementById("numero").value);
   const percentuale = parseFloat(document.getElementById("percentuale").value);
@@ -190,42 +260,44 @@ function calcolaRisparmio() {
 
 const searchInput = document.getElementById("searchInput");
 
-searchInput.addEventListener("input", function () {
-  const ricerca = this.value.toLowerCase().trim();
-  const strumenti = document.querySelectorAll(".tool-card");
-  const categorie = document.querySelectorAll(".category");
+if (searchInput) {
+  searchInput.addEventListener("input", function () {
+    const ricerca = this.value.toLowerCase().trim();
+    const strumenti = document.querySelectorAll(".tool-card");
+    const categorie = document.querySelectorAll(".category");
 
-  strumenti.forEach(tool => {
-    const nome = tool.getAttribute("data-name").toLowerCase();
-    const titolo = tool.querySelector("h3").innerText.toLowerCase();
+    strumenti.forEach(tool => {
+      const nome = tool.getAttribute("data-name") ? tool.getAttribute("data-name").toLowerCase() : "";
+      const titolo = tool.querySelector("h3").innerText.toLowerCase();
 
-    if (ricerca === "" || nome.includes(ricerca) || titolo.includes(ricerca)) {
-      tool.style.display = "block";
-    } else {
-      tool.style.display = "none";
-    }
+      if (ricerca === "" || nome.includes(ricerca) || titolo.includes(ricerca)) {
+        tool.style.display = "block";
+      } else {
+        tool.style.display = "none";
+      }
+    });
+
+    categorie.forEach(categoria => {
+      const strumentiVisibili = categoria.querySelectorAll(".tool-card[style='display: block;']");
+
+      if (ricerca === "" || strumentiVisibili.length > 0) {
+        categoria.style.display = "block";
+      } else {
+        categoria.style.display = "none";
+      }
+    });
   });
 
-  categorie.forEach(categoria => {
-    const strumentiVisibili = categoria.querySelectorAll(".tool-card[style='display: block;']");
+  searchInput.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      const primoRisultato = document.querySelector(".tool-card[style='display: block;']");
 
-    if (ricerca === "" || strumentiVisibili.length > 0) {
-      categoria.style.display = "block";
-    } else {
-      categoria.style.display = "none";
+      if (primoRisultato) {
+        primoRisultato.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+      }
     }
   });
-});
-
-searchInput.addEventListener("keydown", function (e) {
-  if (e.key === "Enter") {
-    const primoRisultato = document.querySelector(".tool-card[style='display: block;']");
-
-    if (primoRisultato) {
-      primoRisultato.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-      });
-    }
-  }
-});
+}
