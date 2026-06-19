@@ -421,6 +421,42 @@ function calcolaPesoIdeale() {
     "Peso ideale stimato: " + pesoIdeale.toFixed(1) + " kg";
 }
 
+/* AUTO VIAGGI */
+
+function calcolaCostoViaggioAuto() {
+  const distanza = parseFloat(document.getElementById("distanzaViaggio").value);
+  const consumo = parseFloat(document.getElementById("consumoAuto").value);
+  const prezzoCarburante = parseFloat(document.getElementById("prezzoCarburante").value);
+  const pedaggi = parseFloat(document.getElementById("pedaggiViaggio").value) || 0;
+  const speseExtra = parseFloat(document.getElementById("speseExtraViaggio").value) || 0;
+  const persone = parseFloat(document.getElementById("personeViaggio").value) || 1;
+
+  if (
+    isNaN(distanza) ||
+    isNaN(consumo) ||
+    isNaN(prezzoCarburante) ||
+    distanza <= 0 ||
+    consumo <= 0 ||
+    prezzoCarburante <= 0 ||
+    persone <= 0
+  ) {
+    document.getElementById("risultatoCostoViaggioAuto").innerText =
+      "Inserisci distanza, consumo, prezzo carburante e persone validi.";
+    return;
+  }
+
+  const litri = (distanza * consumo) / 100;
+  const costoCarburante = litri * prezzoCarburante;
+  const totale = costoCarburante + pedaggi + speseExtra;
+  const quotaPersona = totale / persone;
+
+  document.getElementById("risultatoCostoViaggioAuto").innerText =
+    "Carburante: €" + costoCarburante.toFixed(2) +
+    " | Litri stimati: " + litri.toFixed(2) +
+    " | Totale: €" + totale.toFixed(2) +
+    " | A persona: €" + quotaPersona.toFixed(2);
+}
+
 /* RICERCA */
 
 const searchInput = document.getElementById("searchInput");

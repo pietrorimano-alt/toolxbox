@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToolBox Auto Viaggi - Calcolo costi viaggio</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2563eb">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <nav>
+    <a href="index.html" class="logo">ToolBox</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="studenti.html">Studenti</a>
+      <a href="lavoratori.html">Lavoratori</a>
+      <a href="finanza.html">Finanza</a>
+      <a href="salute.html">Salute</a>
+      <a href="auto-viaggi.html">Auto viaggi</a>
+    </div>
+  </nav>
+
+  <div class="hero-content">
+    <span class="badge">Area auto viaggi</span>
+    <h2>Strumenti per auto e viaggi</h2>
+    <p>Calcola carburante, pedaggi, consumi, spese extra e costo per persona.</p>
+
+    <input id="searchInput" type="text" placeholder="Cerca uno strumento...">
+
+    <div class="stats">
+      <a href="studenti.html">Studenti</a>
+      <a href="lavoratori.html">Lavoratori</a>
+      <a href="finanza.html">Finanza</a>
+      <a href="salute.html">Salute</a>
+      <a href="auto-viaggi.html">Auto viaggi</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="category">
+    <h2>Auto viaggi</h2>
+
+    <div class="grid">
+
+      <section class="tool-card" data-name="auto viaggi carburante pedaggi consumo benzina diesel spese viaggio">
+        <h3>Costo viaggio auto</h3>
+        <input id="distanzaViaggio" type="number" placeholder="Distanza totale (km)">
+        <input id="consumoAuto" type="number" placeholder="Consumo medio (L/100 km)">
+        <input id="prezzoCarburante" type="number" placeholder="Prezzo carburante al litro">
+        <input id="pedaggiViaggio" type="number" placeholder="Pedaggi">
+        <input id="speseExtraViaggio" type="number" placeholder="Spese extra">
+        <input id="personeViaggio" type="number" placeholder="Persone">
+        <button onclick="calcolaCostoViaggioAuto()">Calcola</button>
+        <p id="risultatoCostoViaggioAuto"></p>
+      </section>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 ToolBox - Area Auto Viaggi</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

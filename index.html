@@ -19,16 +19,17 @@
     </a>
     <div class="nav-links">
       <a href="studenti.html">Studio</a>
-      <a href="lavoro.html">Lavoro</a>
+      <a href="lavoratori.html">Lavoro</a>
       <a href="finanza.html">Finanza</a>
       <a href="salute.html">Salute</a>
-    </div>
+      <a href="auto-viaggi.html">Auto viaggi</a>
+    </div>  
   </nav>
 
   <div class="hero-content">
     <span class="badge">Studio • Lavoro • Finanza • Salute</span>
-    <h2>La piattaforma gratuita per studio, lavoro, finanza e salute</h2>
-    <p>Decine di strumenti semplici e veloci per studenti, lavoratori e uso quotidiano.</p>
+    <h2>La piattaforma gratuita per studio, lavoro, finanza, salute e viaggi</h2>
+    <p>Decine di strumenti semplici e veloci per studenti, lavoratori, viaggiatori e uso quotidiano.</p>
 
     <input id="searchInput" type="text" placeholder="Cerca uno strumento e premi Invio...">
 
@@ -37,6 +38,7 @@
       <a href="lavoratori.html">💼 Lavoratori</a>
       <a href="finanza.html">💰 Finanza</a>
       <a href="salute.html">❤️ Salute</a>
+      <a href="auto-viaggi.html">Auto viaggi</a>
     </div>  
 </div>
 </header>
@@ -78,6 +80,31 @@
         <p id="risultatoLaurea"></p>
       </section>
 
+      <section id="conversione-voto" class="tool-card" data-name="conversione voto trentesimi centodecimi 30 110">
+        <h3>Conversione 30 -> 110</h3>
+        <input id="votoTrentesimi" type="number" placeholder="Voto in trentesimi">
+        <button onclick="convertiTrentaCentodieci()">Converti</button>
+        <p id="risultatoConversioneVoto"></p>
+      </section>
+
+      <section id="voto-minimo" class="tool-card" data-name="voto minimo prossimo esame media obiettivo universita">
+        <h3>Voto minimo prossimo esame</h3>
+        <input id="mediaAttuale" type="number" placeholder="Media attuale">
+        <input id="cfuAttuali" type="number" placeholder="CFU attuali">
+        <input id="cfuProssimo" type="number" placeholder="CFU prossimo esame">
+        <input id="mediaObiettivo" type="number" placeholder="Media obiettivo">
+        <button onclick="calcolaVotoMinimo()">Calcola</button>
+        <p id="risultatoVotoMinimo"></p>
+      </section>
+
+      <section id="cfu-mancanti" class="tool-card" data-name="cfu mancanti laurea universita crediti esami">
+        <h3>CFU mancanti alla laurea</h3>
+        <input id="cfuConseguiti" type="number" placeholder="CFU conseguiti">
+        <input id="cfuTotaliLaurea" type="number" placeholder="CFU totali laurea, es. 180">
+        <button onclick="calcolaCFUMancanti()">Calcola</button>
+        <p id="risultatoCFUMancanti"></p>
+      </section>
+
     </div>
   </section>
 
@@ -95,6 +122,37 @@
         </select>
         <button onclick="calcolaStipendio()">Calcola</button>
         <p id="risultatoStipendio"></p>
+      </section>
+
+      <section id="stipendio-mensile" class="tool-card" data-name="stipendio mensile">
+        <h3>Stipendio mensile</h3>
+        <input id="stipendioAnnuo" type="number" placeholder="Stipendio annuo">
+        <button onclick="calcolaMensile()">Calcola</button>
+        <p id="risultatoMensile"></p>
+      </section>
+
+      <section id="guadagno-orario" class="tool-card" data-name="guadagno orario">
+        <h3>Guadagno orario</h3>
+        <input id="stipendioMensile" type="number" placeholder="Stipendio mensile">
+        <input id="oreMensili" type="number" placeholder="Ore lavorate al mese">
+        <button onclick="calcolaGuadagnoOrario()">Calcola</button>
+        <p id="risultatoOrario"></p>
+      </section>
+
+      <section id="ore-mese" class="tool-card" data-name="ore lavorate">
+        <h3>Ore lavorate al mese</h3>
+        <input id="oreGiornaliere" type="number" placeholder="Ore al giorno">
+        <input id="giorniLavorativi" type="number" placeholder="Giorni lavorativi">
+        <button onclick="calcolaOreMese()">Calcola</button>
+        <p id="risultatoOreMese"></p>
+      </section>
+
+      <section id="straordinari" class="tool-card" data-name="straordinari">
+        <h3>Calcolo straordinari</h3>
+        <input id="pagaOraria" type="number" placeholder="Paga oraria">
+        <input id="oreExtra" type="number" placeholder="Ore straordinario">
+        <button onclick="calcolaStraordinario()">Calcola</button>
+        <p id="risultatoStraordinario"></p>
       </section>
 
     </div>
@@ -136,6 +194,32 @@
         <p id="risultatoRisparmio"></p>
       </section>
 
+      <section id="interesse-composto" class="tool-card" data-name="interesse composto investimento capitale rendimento">
+        <h3>Interesse composto</h3>
+        <input id="capitaleIniziale" type="number" placeholder="Capitale iniziale">
+        <input id="tassoInteresse" type="number" placeholder="Tasso annuo %">
+        <input id="anniInvestimento" type="number" placeholder="Anni">
+        <button onclick="calcolaInteresseComposto()">Calcola</button>
+        <p id="risultatoInteresseComposto"></p>
+      </section>
+
+      <section id="obiettivo-risparmio" class="tool-card" data-name="obiettivo risparmio soldi mensile">
+        <h3>Obiettivo risparmio</h3>
+        <input id="obiettivoRisparmio" type="number" placeholder="Obiettivo totale">
+        <input id="mesiRisparmio" type="number" placeholder="Numero mesi">
+        <button onclick="calcolaObiettivoRisparmio()">Calcola</button>
+        <p id="risultatoObiettivoRisparmio"></p>
+      </section>
+
+      <section id="rata-prestito" class="tool-card" data-name="prestito rata mensile finanziamento">
+        <h3>Rata prestito</h3>
+        <input id="importoPrestito" type="number" placeholder="Importo prestito">
+        <input id="tassoPrestito" type="number" placeholder="Tasso annuo %">
+        <input id="anniPrestito" type="number" placeholder="Durata anni">
+        <button onclick="calcolaRataPrestito()">Calcola</button>
+        <p id="risultatoRataPrestito"></p>
+      </section>
+
     </div>
   </section>
 
@@ -157,6 +241,47 @@
         <input id="altezza" type="number" placeholder="Altezza in cm">
         <button onclick="calcolaBMI()">Calcola</button>
         <p id="risultatoBMI"></p>
+      </section>
+
+      <section id="acqua-giornaliera" class="tool-card" data-name="acqua giornaliera peso litri salute">
+        <h3>Acqua giornaliera</h3>
+        <input id="pesoAcqua" type="number" placeholder="Peso (kg)">
+        <button onclick="calcolaAcqua()">Calcola</button>
+        <p id="risultatoAcqua"></p>
+      </section>
+
+      <section id="calorie-giornaliere" class="tool-card" data-name="calorie giornaliere peso fabbisogno salute">
+        <h3>Calorie giornaliere</h3>
+        <input id="pesoCalorie" type="number" placeholder="Peso (kg)">
+        <button onclick="calcolaCalorie()">Calcola</button>
+        <p id="risultatoCalorie"></p>
+      </section>
+
+      <section id="peso-ideale" class="tool-card" data-name="peso ideale altezza salute">
+        <h3>Peso ideale</h3>
+        <input id="altezzaIdeale" type="number" placeholder="Altezza (cm)">
+        <button onclick="calcolaPesoIdeale()">Calcola</button>
+        <p id="risultatoPesoIdeale"></p>
+      </section>
+
+    </div>
+  </section>
+
+  <section class="category" id="auto-viaggi">
+    <h2>Auto viaggi</h2>
+
+    <div class="grid">
+
+      <section id="costo-viaggio-auto" class="tool-card" data-name="auto viaggi carburante pedaggi consumo benzina diesel spese viaggio">
+        <h3>Costo viaggio auto</h3>
+        <input id="distanzaViaggio" type="number" placeholder="Distanza totale (km)">
+        <input id="consumoAuto" type="number" placeholder="Consumo medio (L/100 km)">
+        <input id="prezzoCarburante" type="number" placeholder="Prezzo carburante al litro">
+        <input id="pedaggiViaggio" type="number" placeholder="Pedaggi">
+        <input id="speseExtraViaggio" type="number" placeholder="Spese extra">
+        <input id="personeViaggio" type="number" placeholder="Persone">
+        <button onclick="calcolaCostoViaggioAuto()">Calcola</button>
+        <p id="risultatoCostoViaggioAuto"></p>
       </section>
 
     </div>

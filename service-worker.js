@@ -1,4 +1,4 @@
-const CACHE_NAME = "toolbox-cache-v1";
+const CACHE_NAME = "toolbox-cache-v2";
 
 const FILES_TO_CACHE = [
   "index.html",
@@ -6,6 +6,7 @@ const FILES_TO_CACHE = [
   "lavoratori.html",
   "finanza.html",
   "salute.html",
+  "auto-viaggi.html",
   "style.css",
   "script.js",
   "favicon.svg",
